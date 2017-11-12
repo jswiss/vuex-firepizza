@@ -13,3 +13,14 @@
     </nav>
   </header>
 </template>
+
+<style scoped>
+  header {
+  	margin-bottom: 20px;
+  }
+
+  .navbar-brand {
+  	font-size: 1.5em;
+  }
+</style>
+
