@@ -5,7 +5,7 @@
     </div>
     <div class="container">
       <pp-home></pp-home> 
-      <pp-menu></pp-menu> 
+      <pp-admin></pp-admin> 
     </div>
     <div class="container">
       <pp-footer></pp-footer> 
@@ -18,6 +18,7 @@
   import Footer from './components/Footer.vue';
   import Home from './components/Home.vue';
   import Menu from './components/Menu.vue';
+  import Admin from './components/Admin.vue';
 
   export default {
   	components: {
@@ -25,6 +26,7 @@
   		ppFooter: Footer,
   		ppHome: Home,
   		ppMenu: Menu,
+  		ppAdmin: Admin,
   	},
   };
 </script>
