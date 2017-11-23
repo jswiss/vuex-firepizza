@@ -1,22 +1,14 @@
 <template>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">Contact</h4>
-      <p class="card-text">
-        <address>
-          <strong>Pizza Ho Down!</strong>
-          <br>
-          1234 Fake Street
-          <br>
-          The Updside Down
-          <br>
-          G20 6BS
-        </address>
-        <address>
-          <strong>Email</strong>
-          <p>pizzahodown@gmail.com</p>
-        </address>
-      </p>
-    </div>
+  <div>
+    <p>Click below for more info</p>
+    <nav class="navbar navbar-toggleable-md navbar-light">
+      <ul class="navbar-nav">
+        <router-link :to="{ name: 'contactLink' }" tag="li"><a class="nav-link">Contact</a></router-link>
+        <router-link :to="{ name: 'historyLink' }" tag="li"><a class="nav-link">History</a></router-link>
+        <router-link :to="{ name: 'deliveryLink' }" tag="li"><a class="nav-link">Delivery</a></router-link>
+        <router-link :to="{ name: 'orderingLink' }" tag="li"><a class="nav-link">Ordering Guide</a></router-link>
+      </ul>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>

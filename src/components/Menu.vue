@@ -69,82 +69,33 @@
 </template>
 
 <script>
-  export default {
-  	data() {
-  		return {
-  			basket: [],
-  			basketText: 'Your basket is empty!',
-  			getMenuItems: {
-  				1: {
-  					name: 'Margherita',
-  					id: 1,
-  					description: 'A delicious tomato based pizza topped with mozzarella',
-  					options: [
-  						{
-  							size: 9,
-  							price: 6.95,
-  						},
-  						{
-  							size: 12,
-  							price: 10.95,
-  						},
-  					],
-  				},
-  				2: {
-  					name: 'Pepperoni',
-  					id: 2,
-  					description:
-  						'A delicious tomato based pizza topped with mozzarella and pepperoni',
-  					options: [
-  						{
-  							size: 9,
-  							price: 7.95,
-  						},
-  						{
-  							size: 12,
-  							price: 12.95,
-  						},
-  					],
-  				},
-  				3: {
-  					name: 'Ham and Pineapple',
-  					id: 3,
-  					description:
-  						'A delicious tomato based pizza topped with mozzarella, ham and pineapple',
-  					options: [
-  						{
-  							size: 9,
-  							price: 7.95,
-  						},
-  						{
-  							size: 12,
-  							price: 12.95,
-  						},
-  					],
-  				},
-  			},
-  		};
-  	},
-  	methods: {
-  		addToBasket(item, option) {
-  			this.basket.push({
-  				name: item.name,
-  				price: option.price,
-  				size: option.size,
-  				quantity: 1,
-  				id: this.basket.length,
-  			});
-  		},
-  		removeFromBasket(item) {
-  			this.basket.slice(this.basket.indexOf(item), 1);
-  		},
-  		inc(item) {
-  			item.quantity++;
-  		},
-  		dec(item) {
-  			item.quantity--;
-  			if (item.quantity === 0) this.removeFromBasket(item);
-  		},
-  	},
-  };
+	export default {
+		data() {
+			return {
+				basket: [],
+				basketText: 'Your basket is empty!',
+			};
+		},
+		methods: {
+			addToBasket(item, option) {
+				this.basket.push({
+					name: item.name,
+					price: option.price,
+					size: option.size,
+					quantity: 1,
+					id: this.basket.length,
+				});
+			},
+			removeFromBasket(item) {
+				this.basket.slice(this.basket.indexOf(item), 1);
+			},
+			inc(item) {
+				item.quantity++;
+			},
+			dec(item) {
+				item.quantity--;
+				if (item.quantity === 0) this.removeFromBasket(item);
+			},
+		},
+	};
 </script>

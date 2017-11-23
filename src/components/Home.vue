@@ -4,13 +4,21 @@
       <div class="background">
         <h1>Welcome to Pizza Planet</h1>
         <h2>feeling hungry?</h2>
-        <button class="btn btn-success">Let's Order!</button>
+        <button class="btn btn-success" @click="goToMenu">Let's Order!</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  export default {
+  	methods: {
+  		goToMenu() {
+  			// access router methods in vue instance as below
+  			this.$router.push({ name: 'menuLink' });
+  		},
+  	},
+  };
 </script>
 
 <style>
