@@ -59,43 +59,53 @@
           </tbody>
         </table>
         <p>Order total: </p>
-        <button class="btn btn-success btn-block">Place Order</button>
+        <button class="btn btn-success btn-block" @click="addNewOrder">Place Order</button>
       </div>
       <div v-else>
-        <p>{{ basketText }}</p>
+        <p>{{ basketText }}</p> {{ this.$store.state.orders }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				basket: [],
-				basketText: 'Your basket is empty!',
-			};
-		},
-		methods: {
-			addToBasket(item, option) {
-				this.basket.push({
-					name: item.name,
-					price: option.price,
-					size: option.size,
-					quantity: 1,
-					id: this.basket.length,
-				});
-			},
-			removeFromBasket(item) {
-				this.basket.slice(this.basket.indexOf(item), 1);
-			},
-			inc(item) {
-				item.quantity++;
-			},
-			dec(item) {
-				item.quantity--;
-				if (item.quantity === 0) this.removeFromBasket(item);
-			},
-		},
-	};
+  import { mapGetters } from 'vuex';
+
+  export default {
+  	data() {
+  		return {
+  			basket: [],
+  			basketText: 'Your basket is empty!',
+  		};
+  	},
+  	computed: {
+  		...mapGetters(['getMenuItems']),
+  	},
+  	methods: {
+  		addToBasket(item, option) {
+  			this.basket.push({
+  				name: item.name,
+  				price: option.price,
+  				size: option.size,
+  				quantity: 1,
+  				id: this.basket.length,
+  			});
+  		},
+  		removeFromBasket(item) {
+  			this.basket.slice(this.basket.indexOf(item), 1);
+  		},
+  		inc(item) {
+  			item.quantity++;
+  		},
+  		dec(item) {
+  			item.quantity--;
+  			if (item.quantity === 0) this.removeFromBasket(item);
+  		},
+  		addNewOrder() {
+  			this.$store.commit('addOrder', this.basket);
+  			this.basket = [];
+  			this.basketText = 'Thank you, your order has been placed';
+  		},
+  	},
+  };
 </script>

@@ -13,9 +13,9 @@
               <th>Remove from Menu</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody v-for="item in getMenuItems" :key="item.id">
             <tr>
-              <td>Margherita</td>
+              <td>{{ item.name }}</td>
               <td><button class="btn btn-outline-danger btn-sm" type="button">x</button></td>
             </tr>
           </tbody>
@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <h3>Current Orders:</h3>
+        <h3>Current Orders: {{ numberOfOrders }}</h3>
         <table class="table table-sm">
           <thead class="thead-default">
             <tr>
@@ -61,10 +61,15 @@
 <script>
   import NewPizza from './NewPizza.vue';
   import Login from './Login.vue';
+  import { mapGetters } from 'vuex';
+
   export default {
   	components: {
   		ppNewPizza: NewPizza,
   		ppLogin: Login,
+  	},
+  	computed: {
+  		...mapGetters(['numberOfOrders', 'getMenuItems']),
   	},
   	beforeRouteLeave: (to, from, next) => {
   		if (confirm('Have you remembered to log out?') == true) {
